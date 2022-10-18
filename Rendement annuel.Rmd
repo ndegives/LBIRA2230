@@ -1,0 +1,79 @@
+---
+title: "Rendement annuel"
+author: "Degives Nicolas"
+date: "Date"
+output:
+  html_document:
+    code_folding: show
+    collapsed: yes
+    fig_caption: yes
+    fig_height: 5
+    fig_width: 6
+    highlight: tango
+    number_sections: yes
+    smart: no
+    theme: united
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+  pdf_document:
+    toc: yes
+    toc_depth: '2'
+    number_sections: yes
+editor_options:
+  chunk_output_type: console
+---
+  
+```{r setup, include=FALSE}
+rm(list=ls()) # Clean the workspace
+library(pander)
+library(readxl)
+library(tidyverse)
+library(knitr)
+library(htmltools)
+```
+
+# Import data
+
+```{r, echo=TRUE}
+data <- read_excel("Stabel rendement 2017_2021.xls")
+data$annee <- as.factor(data$annee)
+data$culture <- as.factor(data$culture)
+head(data)
+```
+
+# Quick view
+
+```{r, echo=TRUE}
+ggplot(data=data,aes(x=annee,y=rendement))+
+  geom_bar(stat='identity')+
+  facet_wrap(~culture)
+```
+
+```{r, echo=TRUE}
+for (i in levels(data$culture)) {
+  print(ggplot(data=subset(data,culture==i),aes(x=annee,y=rendement))+
+  geom_bar(stat='identity')+
+  labs(title=i))
+}
+```
+
+```{r, echo=TRUE}
+
+```
+
+```{r, echo=TRUE}
+
+```
+
+```{r, echo=TRUE}
+
+```
+
+```{r, echo=TRUE}
+
+```
+
+```{r, echo=TRUE}
+
+```
