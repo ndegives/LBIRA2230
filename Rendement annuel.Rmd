@@ -54,7 +54,7 @@ ggplot(data=data,aes(x=annee,y=rendement))+
 for (i in levels(data$culture)) {
   print(ggplot(data=subset(data,culture==i),aes(x=annee,y=rendement))+
   geom_bar(stat='identity')+
-  labs(title=i))
+  labs(title=i,x='annee',y='rendement [100kg/ha]'))
 }
 ```
 
